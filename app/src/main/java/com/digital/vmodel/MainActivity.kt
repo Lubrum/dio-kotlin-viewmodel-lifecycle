@@ -5,16 +5,15 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var txtContador: EditText
-    lateinit var btnDados: Button
-    lateinit var btnMostrar: Button
+    private lateinit var txtContador: EditText
+    private lateinit var btnDados: Button
+    private lateinit var btnMostrar: Button
 
-    lateinit var mViewModel: MainViewModel
+    private lateinit var mViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +30,9 @@ class MainActivity : AppCompatActivity() {
         btnDados = findViewById(R.id.btnDados)
         btnMostrar = findViewById(R.id.btnMostrar)
 
-        mViewModel.mContador.observe(this, Observer { valor ->
+        mViewModel.mContador.observe(this) { valor ->
             txtContador.setText(valor)
-        })
+        }
     }
 
     private fun initClick() {
